@@ -18,7 +18,7 @@ df = pd.read_csv(file_path)
 
 print("Loaded data:", df.shape)
 
-# Step 2: basic explore
+# Step 2
 print("\nFirst 5 rows:")
 print(df.head())
 
@@ -26,7 +26,7 @@ print("\nAverage score:", df["score"].mean())
 print("Average comments:", df["num_comments"].mean())
 
 
-# Step 3: NumPy analysis
+# Step 3: NumPy 
 
 scores = df["score"].values
 
@@ -38,14 +38,12 @@ print("Max score:", np.max(scores))
 print("Min score:", np.min(scores))
 
 
-# category with most stories
 top_category = df["category"].value_counts().idxmax()
 count = df["category"].value_counts().max()
 
 print("\nMost stories in:", top_category, f"({count} stories)")
 
 
-# most commented story
 max_comments = df["num_comments"].max()
 top_story = df[df["num_comments"] == max_comments].iloc[0]
 
@@ -54,10 +52,8 @@ print("\nMost commented story:", top_story["title"], "-", max_comments, "comment
 
 # Step 4: add new columns
 
-# engagement = comments / (score + 1)
 df["engagement"] = df["num_comments"] / (df["score"] + 1)
 
-# is_popular = score > avg score
 avg_score = df["score"].mean()
 df["is_popular"] = df["score"] > avg_score
 
