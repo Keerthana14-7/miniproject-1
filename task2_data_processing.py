@@ -32,12 +32,12 @@ df["score"] = df["score"].astype(int)
 df["num_comments"] = df["num_comments"].astype(int)
 
 
-# Step 5: remove low score (<5)
+# Step 5: remove low score
 df = df[df["score"] >= 5]
 print("After removing low scores:", len(df))
 
 
-# Step 6: remove extra spaces in title
+# Step 6: remove extra spaces
 df["title"] = df["title"].str.strip()
 
 
@@ -54,6 +54,5 @@ df.to_csv(output_file, index=False)
 print("Saved file:", output_file)
 
 
-# Step 9: category summary
 print("\nStories per category:")
 print(df["category"].value_counts())
